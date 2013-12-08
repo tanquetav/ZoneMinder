@@ -174,6 +174,7 @@ $sourceTypes = array(
     'Remote' => $SLANG['Remote'],
     'File'   => $SLANG['File'],
     'Ffmpeg' => $SLANG['Ffmpeg'],
+    'Vlc' => 'Vlc',
 );
 if ( !ZM_HAS_V4L )
     unset($sourceTypes['Local']);
@@ -680,7 +681,7 @@ switch ( $tab )
             <tr><td><?= $SLANG['RemoteHostPath'] ?></td><td><input type="text" name="newMonitor[Path]" value="<?= validHtmlStr($newMonitor['Path']) ?>" size="36"/></td></tr>
 <?php
         }
-        elseif ( $newMonitor['Type'] == "File" || $newMonitor['Type'] == "Ffmpeg" )
+        elseif ( $newMonitor['Type'] == "File" || $newMonitor['Type'] == "Ffmpeg"  || $newMonitor['Type'] == "Vlc" )
         {
 ?>
             <tr><td><?= $SLANG['SourcePath'] ?></td><td><input type="text" name="newMonitor[Path]" value="<?= validHtmlStr($newMonitor['Path']) ?>" size="36"/></td></tr>

@@ -324,6 +324,20 @@ if(NOT ZM_NO_FFMPEG)
 
 endif(NOT ZM_NO_FFMPEG)
 
+find_library(LIBVLC_LIBRARIES vlc)
+if(LIBVLC_LIBRARIES)
+		set(HAVE_LIBVLC 1)
+        	list(APPEND ZM_BIN_LIBS ${LIBVLC_LIBRARIES})
+		find_path(LIBVLC_INCLUDE_DIR "vlc/libvlc.h")
+		if(LIBVLC_INCLUDE_DIR)
+			include_directories(${LIBVLC_INCLUDE_DIR})
+			set(CMAKE_REQUIRED_INCLUDES ${LIBVLC_INCLUDE_DIR})
+		endif(LIBVLC_INCLUDE_DIR)
+else(LIBVLC_LIBRARIES)
+		set(optlibsnotfound "${optlibsnotfound} LibVlc")
+endif(LIBVLC_LIBRARIES)
+
+
 # *** END OF LIBRARY CHECKS ***
 
 # Check for gnutls or crypto
